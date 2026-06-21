@@ -1,27 +1,27 @@
-# Web Service de Alunos com JWT
+# Student Web Service with JWT
 
-Este repositório traz um projeto simples para a disciplina **Programação Web 2**, focado em autenticação de usuários com JWT, armazenamento de dados em arrays e rotas protegidas usando Express.js.
+A project developed for the **Web Programming 2** course, focused on user authentication with JWT, in-memory data storage, and protected routes using Express.js.
 
-## Sobre o Projeto
+## About the Project
 
-A aplicação é uma API REST feita com Node.js e Express. Permite cadastrar e logar usuários usando JWT. Depois de logado, dá pra acessar rotas protegidas para gerenciar alunos.
+A REST API built with Node.js and Express. It allows users to register and log in with JWT. Once authenticated, users can access protected routes to manage student records.
 
-Todos os dados (usuários e alunos) ficam em **arrays na memória**. O `id` do aluno é informado manualmente.
+All data (users and students) is stored in **in-memory arrays**. The student `id` is provided manually in the request body.
 
-### Funcionalidades
+## Features
 
-- **/register**: Cadastro de usuário com senha criptografada (bcrypt)
-- **/login**: Gera um token JWT válido por 1 hora
-- **/alunos**:
-  - `GET`: Lista todos os alunos (protegido)
-  - `POST`: Adiciona aluno (protegido)
-  - `PUT /alunos/:id`: Atualiza aluno (protegido)
-  - `DELETE /alunos/:id`: Remove aluno (protegido)
-  - `GET /alunos/:id`: Retorna dados de um aluno específico (protegido)
-  - `GET /alunos/medias`: Retorna nome e média das notas de todos os alunos (protegido)
-  - `GET /alunos/aprovados`: Retorna nome e status de aprovação de todos os alunos (protegido)
+- **/register**: User registration with encrypted password (bcrypt).
+- **/login**: Generates a JWT valid for 1 hour.
+- **/alunos** (students):
+  - `GET`: List all students (protected)
+  - `POST`: Add a student (protected)
+  - `PUT /alunos/:id`: Update a student (protected)
+  - `DELETE /alunos/:id`: Remove a student (protected)
+  - `GET /alunos/:id`: Retrieve a specific student (protected)
+  - `GET /alunos/medias`: Return the name and grade average for all students (protected)
+  - `GET /alunos/aprovados`: Return the name and approval status for all students (protected)
 
-## Tecnologias
+## Technologies
 
 - **Node.js**
 - **Express.js**
@@ -29,7 +29,7 @@ Todos os dados (usuários e alunos) ficam em **arrays na memória**. O `id` do a
 - **BcryptJS**
 - **dotenv**
 
-## Estrutura
+## Project Structure
 
 ```
 student-webservice/
@@ -40,15 +40,15 @@ student-webservice/
 └── README.md
 ```
 
-## Observações
+## Notes
 
-- Não usa banco de dados, só arrays em memória.
-- O campo `id` do aluno é informado no corpo da requisição.
-- O token JWT vai no cabeçalho: `Authorization: Bearer <token>`
+- No database — data is stored in in-memory arrays only.
+- The student `id` must be provided in the request body.
+- The JWT token goes in the header: `Authorization: Bearer <token>`
 
-## Exemplos
+## Examples
 
-**Cadastro de Usuário (POST /register)**
+**User Registration (POST /register)**
 
 ```json
 {
@@ -66,29 +66,29 @@ student-webservice/
 }
 ```
 
-Resposta:
+Response:
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
 }
 ```
 
-**Cadastro de Aluno (POST /alunos)**
+**Add Student (POST /alunos)**
 
-Cabeçalho:
+Header:
 ```
 Authorization: Bearer <token>
 ```
 
-Corpo:
+Body:
 ```json
 {
   "id": 1,
   "nome": "Leo Freitas",
-  "curso": "Engenharia de Software"
+  "curso": "Software Engineering"
 }
 ```
 
-## Créditos
+## Credits
 
-Projeto feito para a disciplina **PRW2 (Programação Web 2)**.
+Project developed for the **PRW2 (Web Programming 2)** course.
